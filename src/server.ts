@@ -25,14 +25,7 @@ const allowedOrigins = [
 ].filter(Boolean); // Remove undefined
 
 app.use(cors({
-  origin: (origin, callback) => {
-    // Permite requisições sem origin (Postman, apps mobile, etc)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: 'https://book-now-grupo-lucio.web.app',
   credentials: true // Permite envio de cookies
 }));
 app.use(cookieParser());
