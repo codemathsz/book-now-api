@@ -20,7 +20,8 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
   'http://192.168.18.8:5173',
-  process.env.FRONTEND_URL
+  process.env.FRONTEND_URL,
+  'https://book-now-grupo-lucio.web.app'
 ].filter(Boolean); // Remove undefined
 
 app.use(cors({
