@@ -14,20 +14,25 @@ dotenv.config();
 
 const app: Application = express();
 
-// Middlewares
-// Configuração CORS para aceitar múltiplas origens (desktop + mobile)
 const allowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
-  'http://192.168.18.8:5173',
   process.env.FRONTEND_URL,
   'https://book-now-grupo-lucio.web.app'
-].filter(Boolean); // Remove undefined
+].filter(Boolean);
 
 app.use(cors({
-  origin: 'https://book-now-grupo-lucio.web.app',
-  credentials: true // Permite envio de cookies
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Origin não permitida'));
+    }
+  },
+  credentials: true
 }));
+
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
