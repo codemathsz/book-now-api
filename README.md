@@ -1,4 +1,4 @@
-# 🍽️ Book Now API
+# 🍽️ Book Now API - Desafio Fullstack Grupo Lucio
 
 Sistema de reserva de mesas no refeitório - Backend API
 
